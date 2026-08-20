@@ -71,7 +71,6 @@ class QuizGame:
                  2, "파이썬은 catch 대신 이 단어를 사용합니다."),
         ]
 
-
     def _save_data(self) -> None:
         data = {
             "quizzes": [q.to_dict() for q in self.quizzes],
@@ -84,6 +83,25 @@ class QuizGame:
         except Exception as e:
             print(f"\n[!] 데이터 저장 중 오류 발생: {e}")
 
+    def get_valid_int(self,
+                      prompt: str,
+                      min_val: int,
+                      max_val: int,
+                      allow_hint: bool = False) -> int:
+        while True:
+            val_str = self.safe_input(prompt)
+            if allow_hint and val_str.lower() == "h":
+                return -1
+            if not val_str:
+                print("입력값이 비어 있습니다. 다시 입력해주세요.")
+                continue
+            try:
+                val = int(val_str)
+                if min_val <= val <= max_val:
+                    return val
+                print(f"{min_val}~{max_val} 사이의 숫자만 입력 가능합니다.")
+            except ValueError:
+                print("올바른 숫자를 입력해주세요.")
 
     def play_quiz(self) -> None:
         if not self.quizzes:
@@ -122,7 +140,6 @@ class QuizGame:
 
         self.history.append({"score": score, "total": total})
         self._save_data()
-
 
 
     def run(self) -> None:
