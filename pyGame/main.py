@@ -51,24 +51,39 @@ class QuizGame:
         self.history: list[dict] = []
         self._load_data()
 
+
     def _get_default_quizzes(self) -> list[Quiz]:
         return [
-            Quiz("파이썬에서 가변(Mutable) 객체에 해당하는 것은?",
-                 ["int", "str", "list", "tuple"], 3, "추가/삭제가 가능한 자료형입니다."),
             Quiz(
-                "클래스 내부에서 인스턴스 자신을 가리키는 첫 번째 매개변수 이름은?",
-                ["self", "cls", "this", "super"], 1,
-                "관례적으로 '자기 자신'을 뜻합니다."),
-            Quiz("JSON 형식으로 데이터를 파일에 쓸 때 사용하는 함수는?",
-                 ["json.loads()", "json.dump()", "json.load()", "json.dumps()"],
-                 2, "파일(File)에 쓰므로 짧은 이름의 함수입니다."),
+                "Git에서 로컬 저장소를 새로 초기화하여 생성할 때 사용하는 명령어는?",
+                ["git init", "git clone", "git push", "git status"],
+                1,
+                "Initialization의 약자입니다."
+            ),
             Quiz(
-                "Git에서 로컬 저장소를 새로 생성할 때 사용하는 명령어는?",
-                ["git init", "git clone", "git push", "git commit"], 1,
-                "Initialization의 약자입니다."),
-            Quiz("파이썬에서 예외 처리를 위해 사용하는 키워드는?",
-                 ["try / catch", "try / except", "do / except", "if / error"],
-                 2, "파이썬은 catch 대신 이 단어를 사용합니다."),
+                "작업 디렉터리의 변경 사항을 Staging Area(수정 대기 영역)에 추가하는 명령어는?",
+                ["git commit", "git status", "git add", "git checkout"],
+                3,
+                "파일을 '추가'한다는 의미의 영단어입니다."
+            ),
+            Quiz(
+                "원격 저장소(GitHub)의 변경 사항을 가져와 현재 로컬 브랜치와 병합하는 명령어는?",
+                ["git fetch", "git pull", "git push", "git clone"],
+                2,
+                "가져와서 끌어당긴다(pull)는 의미입니다."
+            ),
+            Quiz(
+                "현재 작업 중인 브랜치 목록을 확인하거나 새 브랜치를 만들 때 사용하는 명령어는?",
+                ["git branch", "git merge", "git log", "git diff"],
+                1,
+                "'가지/나뭇가지'라는 뜻을 가진 영단어입니다."
+            ),
+            Quiz(
+                "로컬 저장소의 커밋 내역(히스토리)을 원격 저장소로 업로드할 때 사용하는 명령어는?",
+                ["git fetch", "git pull", "git push", "git commit"],
+                3,
+                "서버로 밀어 넣는(push) 동작입니다."
+            )
         ]
 
     def _save_data(self) -> None:
@@ -82,6 +97,14 @@ class QuizGame:
                 json.dump(data, f, ensure_ascii=False, indent=2)
         except Exception as e:
             print(f"\n[!] 데이터 저장 중 오류 발생: {e}")
+
+    def safe_input(self, prompt: str) -> str:
+        try:
+            return input(prompt).strip()
+        except (KeyboardInterrupt, EOFError):
+            print("\n\n[!] 입력이 중단되었습니다. 데이터를 저장하고 안전하게 종료합니다.")
+            self._save_data()
+            sys.exit(0)
 
     def get_valid_int(self,
                       prompt: str,
