@@ -52,6 +52,46 @@ class QuizGame:
         self._load_data()
 
 
+    def play_quiz(self) -> None:
+        if not self.quizzes:
+            print("\n[!] 등록된 퀴즈가 없습니다.")
+            return
+
+        print("\n=== 퀴즈 풀기 ===")
+        shuffled = self.quizzes.copy()
+        random.shuffle(shuffled)
+
+        score = 0
+        total = len(shuffled)
+
+        for idx, quiz in enumerate(shuffled, 1):
+            quiz.display(idx)
+            print("  (힌트를 원하시면 'h'를 입력하세요)")
+            user_ans = self.get_valid_int("정답 번호 입력 (1-4): ",
+                                          1,
+                                          4,
+                                          allow_hint=True)
+
+            if user_ans == -1:
+                print(f"💡 힌트: {quiz.hint if quiz.hint else '힌트가 없습니다.'}")
+                user_ans = self.get_valid_int("정답 번호 입력 (1-4): ", 1, 4)
+
+            if quiz.check_answer(user_ans):
+                print("⭕ 정답입니다!")
+                score += 1
+            else:
+                print(f"❌ 오답입니다. (정답: {quiz.answer}번)")
+
+        print(f"\n[결과] {total}문제 중 {score}개를 맞히셨습니다!")
+        if score > self.best_score:
+            print(f"🎉 축하합니다! 최고 점수를 갱신했습니다 ({self.best_score} -> {score})")
+            self.best_score = score
+
+        self.history.append({"score": score, "total": total})
+        self._save_data()
+
+
+
     def run(self) -> None:
         while True:
             print("\n====================")
