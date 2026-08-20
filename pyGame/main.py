@@ -24,6 +24,15 @@ class Quiz:
     def check_answer(self, user_answer: int) -> bool:
         return self.answer == user_answer
 
+    def to_dict(self) -> dict:
+        return {
+            "question": self.question,
+            "choices": self.choices,
+            "answer": self.answer,
+            "hint": self.hint,
+        }
+
+
 class QuizGame:
 
     def __init__(self, filepath: str = "pyGame/state.json"):
