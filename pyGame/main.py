@@ -51,7 +51,6 @@ class QuizGame:
         self.history: list[dict] = []
         self._load_data()
 
-
     def _get_default_quizzes(self) -> list[Quiz]:
         return [
             Quiz(
@@ -85,6 +84,29 @@ class QuizGame:
                 "서버로 밀어 넣는(push) 동작입니다."
             )
         ]
+
+    def _load_data(self) -> None:
+        if not os.path.exists(self.filepath):
+            self.quizzes = self._get_default_quizzes()
+            self._save_data()
+            return
+
+        try:
+            with open(self.filepath, "r", encoding="utf-8") as f:
+                data = json.load(f)
+                self.quizzes = [
+                    Quiz.from_dict(q) for q in data.get("quizzes", [])
+                ]
+                self.best_score = data.get("best_score", 0)
+                self.history = data.get("history", [])
+                if not self.quizzes:
+                    self.quizzes = self._get_default_quizzes()
+        except Exception:
+            print("\n[!] state.json 파일이 손상되어 기본 퀴즈 데이터로 복구합니다.")
+            self.quizzes = self._get_default_quizzes()
+            self.best_score = 0
+            self.history = []
+            self._save_data()
 
     def _save_data(self) -> None:
         data = {
