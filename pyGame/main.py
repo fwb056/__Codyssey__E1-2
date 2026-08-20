@@ -209,6 +209,15 @@ class QuizGame:
         self._save_data()
         print("✅ 퀴즈가 성공적으로 추가되었습니다.")
 
+    def list_quizzes(self) -> None:
+        print("\n=== 퀴즈 목록 ===")
+        if not self.quizzes:
+            print("등록된 퀴즈가 없습니다.")
+            return
+
+        for idx, q in enumerate(self.quizzes, 1):
+            print(f"{idx}. {q.question} (정답: {q.answer}번)")
+
 
     def run(self) -> None:
         while True:
