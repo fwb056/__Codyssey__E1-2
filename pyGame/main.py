@@ -52,6 +52,33 @@ class QuizGame:
         self._load_data()
 
 
+    def run(self) -> None:
+        while True:
+            print("\n====================")
+            print(" 파이썬 프로그래밍 퀴즈 게임")
+            print("====================")
+            print("1. 퀴즈 풀기")
+            print("2. 퀴즈 추가")
+            print("3. 퀴즈 목록 보기")
+            print("4. 점수 확인")
+            print("5. 종료")
+
+            choice = self.get_valid_int("메뉴를 선택하세요 (1-5): ", 1, 5)
+
+            if choice == 1:
+                self.play_quiz()
+            elif choice == 2:
+                self.add_quiz()
+            elif choice == 3:
+                self.list_quizzes()
+            elif choice == 4:
+                self.show_score()
+            elif choice == 5:
+                print("프로그램을 종료합니다. 이용해 주셔서 감사합니다!")
+                self._save_data()
+                break
+
+
 if __name__ == "__main__":
     game = QuizGame()
     game.run()
