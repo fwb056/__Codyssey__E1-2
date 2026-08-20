@@ -32,6 +32,15 @@ class Quiz:
             "hint": self.hint,
         }
 
+    @classmethod
+    def from_dict(cls, data: dict):
+        return cls(
+            question=data.get("question", ""),
+            choices=data.get("choices", []),
+            answer=data.get("answer", 1),
+            hint=data.get("hint", ""),
+        )
+
 
 class QuizGame:
 
