@@ -218,6 +218,16 @@ class QuizGame:
         for idx, q in enumerate(self.quizzes, 1):
             print(f"{idx}. {q.question} (정답: {q.answer}번)")
 
+    def show_score(self) -> None:
+        print("\n=== 점수 및 기록 확인 ===")
+        print(f"🏆 최고 점수: {self.best_score}점")
+        if not self.history:
+            print("아직 실행된 게임 기록이 없습니다.")
+            return
+
+        print("\n[최근 게임 기록]")
+        for idx, h in enumerate(self.history[-5:], 1):
+            print(f"  {idx}. {h['total']}문제 중 {h['score']}점")
 
     def run(self) -> None:
         while True:
