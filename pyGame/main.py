@@ -186,6 +186,29 @@ class QuizGame:
         self.history.append({"score": score, "total": total})
         self._save_data()
 
+    def add_quiz(self) -> None:
+        print("\n=== 퀴즈 추가 ===")
+        question = self.safe_input("문제 내용 입력: ")
+        while not question:
+            print("문제 내용은 필수입니다.")
+            question = self.safe_input("문제 내용 입력: ")
+
+        choices = []
+        for i in range(1, 5):
+            c = self.safe_input(f"선택지 {i} 입력: ")
+            while not c:
+                print("선택지는 필수입니다.")
+                c = self.safe_input(f"선택지 {i} 입력: ")
+            choices.append(c)
+
+        answer = self.get_valid_int("정답 번호 입력 (1-4): ", 1, 4)
+        hint = self.safe_input("힌트 입력 (선택사항, 없으면 Enter): ")
+
+        new_quiz = Quiz(question, choices, answer, hint)
+        self.quizzes.append(new_quiz)
+        self._save_data()
+        print("✅ 퀴즈가 성공적으로 추가되었습니다.")
+
 
     def run(self) -> None:
         while True:
