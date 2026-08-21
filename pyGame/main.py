@@ -115,6 +115,11 @@ class QuizGame:
             "history": self.history,
         }
         try:
+            # 파일 경로의 디렉토리(pyGame)가 없으면 자동 생성
+            dir_name = os.path.dirname(self.filepath)
+            if dir_name and not os.path.exists(dir_name):
+                os.makedirs(dir_name, exist_ok=True)
+
             with open(self.filepath, "w", encoding="utf-8") as f:
                 json.dump(data, f, ensure_ascii=False, indent=2)
         except Exception as e:
@@ -232,7 +237,7 @@ class QuizGame:
     def run(self) -> None:
         while True:
             print("\n====================")
-            print(" 파이썬 프로그래밍 퀴즈 게임")
+            print(" git 기초 퀴즈 게임")
             print("====================")
             print("1. 퀴즈 풀기")
             print("2. 퀴즈 추가")
