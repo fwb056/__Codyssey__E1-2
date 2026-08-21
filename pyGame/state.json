@@ -65,13 +65,28 @@
       ],
       "answer": 2,
       "hint": "기록/일지를 의미하는영단어"
+    },
+    {
+      "question": "test1",
+      "choices": [
+        "1",
+        "0",
+        "0",
+        "0"
+      ],
+      "answer": 1,
+      "hint": "1"
     }
   ],
-  "best_score": 5,
+  "best_score": 6,
   "history": [
     {
       "score": 5,
       "total": 5
+    },
+    {
+      "score": 6,
+      "total": 6
     }
   ]
 }
