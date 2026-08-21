@@ -108,7 +108,7 @@ Python과 Git을 이용하여, 내가 만든 프로그램이 왜 이렇게 동�
 프로그램을 종료합니다. 이용해 주셔서 감사합니다!
 ```
 
-## 3. 기능 설명
+## 3. 기능 목록
 
 ### 클래스 Quiz
 
@@ -467,7 +467,35 @@ class QuizGame:
                 break
 ```
 
-## 트러블 슈팅
+## 4. 파일 구조
+```
+__Codyssey__E1-2/
+├── .gitignore
+├── README.md
+├── Docs/
+│   ├── game_play.png       # 프로그램 실행 결과 스크린샷 (퀴즈 추가, 목록, 플레이 등)
+│   └── git_graph.png       # git log --oneline --graph 결과 스크린샷
+└── pyGame/
+    ├── main.py
+    └── state.json          # 프로그램 실행 시 pyGame 폴더 내에 자동 생성됨
+```
+
+## 5. state.json 필드 설명
+
+| 필드명 | 데이터 타입 | 설명 |
+| :--- | :--- | :--- |
+| **`quizzes`** | `Array (List)` | 등록된 전체 퀴즈 객체 목록 |
+| `quizzes[].question` | `String` | 퀴즈의 질문/문제 내용 |
+| `quizzes[].choices` | `Array (List)` | 4지선다 보기 항목 목록 (문자열 4개) |
+| `quizzes[].answer` | `Integer` | 정답 선택지 번호 (`1` ~ `4`) |
+| `quizzes[].hint` | `String` | 힌트 내용 (미입력 시 빈 문자열 `""`) |
+| **`best_score`** | `Integer` | 역대 게임 플레이 중 달성한 최고 점수 (맞힌 개수) |
+| **`history`** | `Array (List)` | 과거 게임 플레이 결과 기록 목록 |
+| `history[].score` | `Integer` | 해당 판에서 맞힌 문제 수 |
+| `history[].total` | `Integer` | 해당 판의 전체 출제 문제 수 |
+
+
+## 6. 트러블 슈팅
 
 ### remote에 이미 새로 커밋된 내용이 있어 로컬에서 푸쉬가 불가능한 오류
 
