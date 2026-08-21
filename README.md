@@ -110,102 +110,26 @@ Python과 Git을 이용하여, 내가 만든 프로그램이 왜 이렇게 동�
 
  * 커밋 이력 출력하기
 ```bash
-***************@****** __Codyssey__E1-2 % git log --graph
-* commit 921d6c4938efee605e81307766fe00ff1cc5bda8 (HEAD -> fwb056-patch-1, origin/fwb056-patch-1)
-| Author: fwb056 <limdh980425@gmail.com>
-| Date:   Thu Aug 20 18:39:09 2026 +0900
-| 
-|     최종최종
-| 
-* commit a912d3af504414d867b239c279df6b43158e4697
-| Author: fwb056 <limdh980425@gmail.com>
-| Date:   Thu Aug 20 18:31:59 2026 +0900
-| 
-|     퀴즈 점수 확인 작성
-| 
-* commit 52d1277fd51767da3083854aef0233aab362c2ae
-| Author: fwb056 <limdh980425@gmail.com>
-| Date:   Thu Aug 20 18:31:31 2026 +0900
-| 
-|     퀴즈 목록 확인 작성
-| 
-* commit 990ddfdeadc6c2fa74eac75f700b2e6808a41f97
-| Author: fwb056 <limdh980425@gmail.com>
-| Date:   Thu Aug 20 18:30:56 2026 +0900
-| 
-|     퀴즈 추가 작성
-| 
-* commit b320b35d64a1f1ff4620d63dc6357613633382a0
-| Author: fwb056 <limdh980425@gmail.com>
-| Date:   Thu Aug 20 18:28:55 2026 +0900
-| 
-|     퀴즈 json 불러오기 작성
-| 
-* commit 5ca3cec2cb9b5107835e6b3cd7673850d696ea4b
-| Author: fwb056 <limdh980425@gmail.com>
-| Date:   Thu Aug 20 18:27:34 2026 +0900
-| 
-|     입력 예외처리, 기본 퀴즈 목록 작성
-| 
-* commit f2eab789e9f4124ac94c97ad69f9af609bb06245
-| Author: fwb056 <limdh980425@gmail.com>
-| Date:   Thu Aug 20 18:22:30 2026 +0900
-| 
-|     데이터 입력부 작성
-| 
-* commit 9704862c15827d5c73a3d2cd67f44bf8f53f4d89
-| Author: fwb056 <limdh980425@gmail.com>
-| Date:   Thu Aug 20 18:19:09 2026 +0900
-| 
-|     퀴즈결과기록 작성
-| 
-* commit d39d413ab3ed109db6093db6736886c85183e4c5
-| Author: fwb056 <limdh980425@gmail.com>
-| Date:   Thu Aug 20 18:17:36 2026 +0900
-| 
-|     퀴즈풀기 작성
-| 
-* commit acf6e6f6f97515ee45b53b1e609c001034d312c5
-| Author: fwb056 <limdh980425@gmail.com>
-| Date:   Thu Aug 20 18:16:10 2026 +0900
-| 
-|     게임 로비화면 작성
-| 
-* commit 2ee75a60e43dcffcb7ae7b51cd797d9078b3032c
-| Author: fwb056 <limdh980425@gmail.com>
-| Date:   Thu Aug 20 18:14:58 2026 +0900
-| 
-|     json 파일에서 불러오기용 메서드 작성
-| 
-* commit f358a8f998d86e935fd1680aed021d4a0521d275
-| Author: fwb056 <limdh980425@gmail.com>
-| Date:   Thu Aug 20 18:12:32 2026 +0900
-| 
-|     json 파일 문제 입력용 메서드 작성
-| 
-* commit 74ad3f3c26811e158b2562f22899850800565203
-| Author: fwb056 <limdh980425@gmail.com>
-| Date:   Thu Aug 20 18:05:20 2026 +0900
-| 
-|     문제, 선지, 답안 체크 작성
-|
-* commit 23e2ceb1afa2691ca84728f7e34ab09888c4f82e
-| Author: fwb056 <limdh980425@gmail.com>
-| Date:   Thu Aug 20 18:02:27 2026 +0900
-| 
-|     기본구조 작성
-| 
-* commit eb8854fc52febcdb5426bbc84b641ed3d1a190b8
-| Author: fwb056 <37894045+fwb056@users.noreply.github.com>
-| Date:   Thu Aug 20 15:29:58 2026 +0900
-| 
-|     Update README.md
-|     
-|     README 작성하기
-| 
-* commit c52de2695c4a05fd624160b96c71712b73e1463e (origin/main, origin/HEAD, main)
-  Author: fwb056 <37894045+fwb056@users.noreply.github.com>
-  Date:   Thu Aug 20 15:24:15 2026 +0900
+* 7daf2dc (HEAD -> main, origin/main, origin/HEAD, fwb056-patch-1) Update README.md
+*   3afada9 Merge pull request #1 from fwb056/fwb056-patch-1
+|\  
+| * 921d6c4 (origin/fwb056-patch-1) 최종최종
+| * a912d3a 퀴즈 점수 확인 작성
+| * 52d1277 퀴즈 목록 확인 작성
+| * 990ddfd 퀴즈 추가 작성
+| * b320b35 퀴즈 json 불러오기 작성
+| * 5ca3cec 입력 예외처리, 기본 퀴즈 목록 작성
+| * f2eab78 데이터 입력부 작성
+| * 9704862 퀴즈결과기록 작성
+| * d39d413 퀴즈풀기 작성
+| * acf6e6f 게임 로비화면 작성
+| * 2ee75a6 json 파일에서 불러오기용 메서드 작성
+| * f358a8f json 파일 문제 입력용 메서드 작성
+| * 74ad3f3 문제, 선지, 답안 체크 작성
+| * 23e2ceb 기본구조 작성
+| * eb8854f Update README.md
+|/  
+* c52de26 Initial commit
   
       Initial commit
 ```
